@@ -49,6 +49,10 @@
     width: 12%;
   }
 
+  th.cancel {
+    width: 10%;
+  }
+
   tr:nth-child(even) {
     background-color: #ececec;
   }

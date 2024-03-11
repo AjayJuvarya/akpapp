@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <div>
       <header className="Anakapalli-Collectorate">
-        <h1 className="AnakapalliCollectorate">Anakapalli Collectorate</h1>
+        <h2 className="AnakapalliCollectorate">Anakapalli Collectorate</h2>
         <img src={logo} height={70} width={80} className="logo" />
       </header>
     </div>

@@ -9,7 +9,7 @@ const MedicalDepartment = () => {
       <Navbar />
       <div style={{ position: "absolute", width: "100%", height: "100%" }}>
         <iframe
-          src="https://docs.google.com/spreadsheets/d/10WA7yWH67MbqBHI64JuK5li1URLO7vbjSKHdVyk0JOg/edit?usp=sharing "
+          src="https://app.powerbi.com/view?r=eyJrIjoiZmRmMGY1OWYtZTc1MC00MDNmLTg2ZDYtYWNjMTIxMTY0MDU1IiwidCI6IjUzOTQ5NTkzLTBlOTQtNDAyZS05NmRmLTkwYTMyNjY0NWUwYiJ9"
           title="Medical Department"
           height="100%"
           width="100%"

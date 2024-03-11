@@ -1,7 +1,6 @@
 import React from "react";
 import Home from "./Home/Home";
 import { Route, Routes } from "react-router-dom";
-import GSWS from "../src/dashboards/GSWS";
 import MedicalDepartment from "../src/dashboards/MedicalDepartment";
 import ReSurvey from "../src/dashboards/ReSurvey";
 import Contact from "../src/contact/Contact";
@@ -9,6 +8,7 @@ import Login from "./login/Login";
 import BookYourSlot from "././slotbooking/BookYourSlot";
 import Register from "./register/Register";
 import PendingAppointments from "./pendingAppointments/PendingAppointments";
+import ElectionReports from "./dashboards/ElectionReports";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
-        <Route path="/gsws" element={<GSWS />} />
+        <Route path="/Electionreports" element={<ElectionReports />} />
         <Route path="/resurvey" element={<ReSurvey />} />
         <Route path="/medicaldepartment" element={<MedicalDepartment />} />
         <Route path="/contact" element={<Contact />} />

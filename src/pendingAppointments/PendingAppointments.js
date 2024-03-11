@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import "./style.css";
 import Navbar from "../Navbar";
 import Header from "../header/Header";
 import { TiTick } from "react-icons/ti";
+import { MdOutlineCancel } from "react-icons/md";
 
 const PendingAppointments = () => {
   const [data, setData] = useState([]);
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedId, setSelectedId] = useState(" ");
+  const [count, setCount] = useState("");
 
   const [modal, setModal] = useState(false);
 
@@ -21,39 +23,49 @@ const PendingAppointments = () => {
   }
 
   const pendingAppointments = async () => {
-    const response = await fetch("http://localhost:8000/pendingAppointments");
+    const response = await fetch("http://localhost:8000/pendingAppointments", {
+      credentials: "include",
+    });
     const result = await response.json();
     const appointment = result?.appointments;
     setData(appointment);
+    console.log(sessionStorage.getItem("Value"));
   };
 
   const confirmSlot = async () => {
     const response = await fetch(
-      `http://localhost:8000/approveAppointment/${selectedId}/approved`
+      `http://localhost:8000/approveAppointment/${selectedId}/approved`,
+      {
+        credentials: "include",
+      }
     );
     const result = await response.json();
+    setCount(count - 1);
     console.log("confirmSlot", result);
     toggleModal();
   };
 
-  const handleSubmit = (id) => {
+  const handleSubmit = (id, indexNumber) => {
     setSelectedId(id);
+    setCount(data.length);
     toggleModal();
   };
 
   useEffect(() => {
     pendingAppointments();
-  }, []);
+  }, [count]);
 
   return (
     <div style={{}}>
       <Header />
       <Navbar />
       <div className="mainHeader">
-        <h3>PendingAppointments</h3>
+        <h3>Pending Appointments</h3>
       </div>
       <marquee behavior="scroll" direction="left" className="scrollText">
-        if You want confirm the slot, just click on the slot and confirm..!
+        if You want confirm the slot, just click on the
+        <TiTick size={20} />
+        and confirm..!
       </marquee>
 
       {data.length > 0 ? (
@@ -69,7 +81,9 @@ const PendingAppointments = () => {
               <th>Department</th>
               <th className="phone">Phone Number</th>
               <th>Status</th>
+
               <th className="accept">Accept</th>
+              <th className="cancel">Cancel</th>
             </tr>
             <tbody>
               {data.map((arrayItem, index) => {
@@ -77,7 +91,7 @@ const PendingAppointments = () => {
                 return (
                   <tr
                     key={arrayItem?._id}
-                    onClick={() => handleSubmit(arrayItem?._id)}
+                    onClick={() => handleSubmit(arrayItem?._id, indexNumber)}
                   >
                     <th className="fontWeight">{indexNumber}</th>
                     <th className="fontWeight">{arrayItem?.date}</th>
@@ -91,14 +105,14 @@ const PendingAppointments = () => {
                     <th className="fontWeight">{arrayItem?.phoneNumber}</th>
                     <th className="fontWeight">{arrayItem?.status}</th>
                     <th className="tableRow">
-                      <TiTick
-                        size={25}
-                        style={{
-                          alignItems: "center",
-                          display: "flex",
-                          justifyContent: "center",
-                        }}
-                      />
+                      <div style={{ marginLeft: 10 }}>
+                        <TiTick size={25} />
+                      </div>
+                    </th>
+                    <th className="tableRow">
+                      <div style={{ marginTop: 5, marginLeft: 15 }}>
+                        <MdOutlineCancel />
+                      </div>
                     </th>
                   </tr>
                 );
@@ -129,11 +143,13 @@ const PendingAppointments = () => {
                 <button className="Yes-Button" onClick={() => confirmSlot()}>
                   Yes
                 </button>
-                <button className="No-Button">No</button>
-
-                <button className="close-modal" onClick={toggleModal}>
-                  CLOSE
+                <button className="No-Button" onClick={toggleModal}>
+                  No
                 </button>
+
+                {/* <button className="close-modal" onClick={toggleModal}>
+                  CLOSE
+                </button> */}
               </div>
             </div>
           )}

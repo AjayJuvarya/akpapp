@@ -13,6 +13,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:8000/login", {
+      credentials: "include",
       method: "POST",
       body: JSON.stringify({
         userName: username,
@@ -26,6 +27,7 @@ const Login = () => {
       if (response.status == 200) {
         alert("Login Success", {});
         const isAdmin = await response?.json();
+        console.log(isAdmin);
         navigate("/", { state: { isAdmin } });
       } else {
         alert("Invalid Credientails");

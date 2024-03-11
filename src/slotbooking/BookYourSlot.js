@@ -36,6 +36,7 @@ function BookYourSlot() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:8000/addAppointment", {
+      credentials: "include",
       method: "POST",
       body: JSON.stringify({
         date: formattedDate,

@@ -49,13 +49,14 @@
 }
 
 .slotBook{
-  background-color: #b1cf86;
-    color: black;
+  background-color: #2196F3;
+    color: white;
     padding: 14px 20px;
     width: 100%;
     cursor: pointer;
     border-radius: 30px;
     margin-left: 25%;
+    font-weight: bold;
 }
 
 .nav a {
@@ -83,7 +84,7 @@
   margin: 0;
 }
 nav a:hover, .dropdown:hover .dropbtn {
-  background-color: tomato;
+  background-color: white;
 }
 .dropdown-content {
   display: none;
@@ -96,7 +97,7 @@ nav a:hover, .dropdown:hover .dropbtn {
 
 .dropdown-content a {
   float: none;
-  color: brown;
+  color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -104,7 +105,7 @@ nav a:hover, .dropdown:hover .dropbtn {
 }
 
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: #e9edec;
 }
 
 .dropdown:hover .dropdown-content {
@@ -172,6 +173,10 @@ th.location {
 
 th.phone {
   width: 25%;
+}
+
+th.cancel {
+  width: 12%;
 }
 
 

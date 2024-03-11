@@ -1,5 +1,6 @@
 .Anakapalli-Collectorate{
-    background: linear-gradient( 45deg,#0D47A1,#4CAF50);
+    background: linear-gradient( 75deg,#73a7f6,#7ed881);
+    /* background: #BFEA7C; */
     height: 100px;
   }
   .AnakapalliCollectorate{
@@ -9,4 +10,8 @@
     left: 125px;
     top: 25px;
     display: inline-block;
+  }
+
+  .logo {
+    border-radius: 50%;
   }
